@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A72ABD97209D60B2000662EE /* UpcomingMoviesDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72ABD96209D60B2000662EE /* UpcomingMoviesDTO.swift */; };
+		A72ABD99209D630A000662EE /* MovieDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72ABD98209D630A000662EE /* MovieDTO.swift */; };
+		A72ABD9B209D68E2000662EE /* DatesDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72ABD9A209D68E2000662EE /* DatesDTO.swift */; };
+		A72ABD9D209D6BEA000662EE /* GenresListDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72ABD9C209D6BEA000662EE /* GenresListDTO.swift */; };
+		A72ABD9F209D6C7A000662EE /* GenreDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72ABD9E209D6C7A000662EE /* GenreDTO.swift */; };
 		A7FF5F0B209D3453001515AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FF5F0A209D3453001515AF /* AppDelegate.swift */; };
 		A7FF5F12209D3454001515AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7FF5F11209D3454001515AF /* Assets.xcassets */; };
 		A7FF5F20209D3454001515AF /* ChallengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FF5F1F209D3454001515AF /* ChallengeTests.swift */; };
@@ -33,6 +38,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A72ABD96209D60B2000662EE /* UpcomingMoviesDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingMoviesDTO.swift; sourceTree = "<group>"; };
+		A72ABD98209D630A000662EE /* MovieDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDTO.swift; sourceTree = "<group>"; };
+		A72ABD9A209D68E2000662EE /* DatesDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatesDTO.swift; sourceTree = "<group>"; };
+		A72ABD9C209D6BEA000662EE /* GenresListDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenresListDTO.swift; sourceTree = "<group>"; };
+		A72ABD9E209D6C7A000662EE /* GenreDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreDTO.swift; sourceTree = "<group>"; };
 		A7FF5F07209D3453001515AF /* Challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Challenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7FF5F0A209D3453001515AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A7FF5F11209D3454001515AF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -72,6 +82,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A72ABD95209D6042000662EE /* Data Transfer Object */ = {
+			isa = PBXGroup;
+			children = (
+				A72ABD9A209D68E2000662EE /* DatesDTO.swift */,
+				A72ABD9E209D6C7A000662EE /* GenreDTO.swift */,
+				A72ABD9C209D6BEA000662EE /* GenresListDTO.swift */,
+				A72ABD98209D630A000662EE /* MovieDTO.swift */,
+				A72ABD96209D60B2000662EE /* UpcomingMoviesDTO.swift */,
+			);
+			path = "Data Transfer Object";
+			sourceTree = "<group>";
+		};
 		A7FF5EFE209D3453001515AF = {
 			isa = PBXGroup;
 			children = (
@@ -207,6 +229,7 @@
 		A7FF5F46209D3B36001515AF /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				A72ABD95209D6042000662EE /* Data Transfer Object */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -365,6 +388,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A72ABD9B209D68E2000662EE /* DatesDTO.swift in Sources */,
+				A72ABD9D209D6BEA000662EE /* GenresListDTO.swift in Sources */,
+				A72ABD99209D630A000662EE /* MovieDTO.swift in Sources */,
+				A72ABD9F209D6C7A000662EE /* GenreDTO.swift in Sources */,
+				A72ABD97209D60B2000662EE /* UpcomingMoviesDTO.swift in Sources */,
 				A7FF5F0B209D3453001515AF /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
