@@ -12,6 +12,7 @@ class DatesDTO: NSObject {
     var maximum: String = ""
     var minimum: String = ""
     
+    // MARK: - Initializers
     override init() {
         super.init()
     }

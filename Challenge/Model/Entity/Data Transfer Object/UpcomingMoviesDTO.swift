@@ -15,6 +15,7 @@ class UpcomingMoviesDTO: NSObject {
     var totalPages: Int = 0
     var totalResults: Int = 0
     
+    // MARK: - Initializers
     init(_ json: NSDictionary) {
         super.init()
         

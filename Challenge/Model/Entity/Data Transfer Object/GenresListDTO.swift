@@ -11,6 +11,7 @@ import UIKit
 class GenresListDTO: NSObject {
     var genres: [GenreDTO] = [GenreDTO]()
     
+    // MARK: - Initializers
     init(_ json: NSDictionary) {
         super.init()
         

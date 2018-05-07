@@ -12,7 +12,7 @@ class GenreDTO: NSObject {
     var gId: Int = 0
     var name: String = ""
     
-    
+    // MARK: - Initializers
     init(_ json: NSDictionary) {
         super.init()
         

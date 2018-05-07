@@ -24,6 +24,7 @@ class MovieDTO: NSObject {
     var video: Bool = false
     var voteAverage: Double = 0.00
     
+    // MARK: - Initializers
     init(_ json: NSDictionary) {
         super.init()
         
