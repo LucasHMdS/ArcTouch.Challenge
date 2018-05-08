@@ -19,8 +19,14 @@ class DetailImageCellView: UITableViewCell {
     
     // MARK: - Setups
     func setupCell(with imageURL: String) {
-        if let imageURL = URL(string: imageURL) {
-            self.ivPoster.kf.setImage(with: imageURL)
+        if (imageURL.contains("jpg")) {
+            if let imageURL = URL(string: imageURL) {
+                self.ivPoster.kf.setImage(with: imageURL)
+            } else {
+                self.ivPoster.image = UIImage(named: "Placeholder")
+            }
+        } else {
+            self.ivPoster.image = UIImage(named: "Placeholder")
         }
     }
 }

@@ -8,15 +8,13 @@
 
 import UIKit
 
-// TODO List:
-// - Load more when reach bottom
-// - Search bar
-
 class MoviesListView: UIViewController {
     // MARK: - Outlets
     @IBOutlet weak var tvMovies: UITableView!
     @IBOutlet weak var aivLoader: UIActivityIndicatorView!
     @IBOutlet weak var lMessage: UILabel!
+    @IBOutlet weak var lMore: UILabel!
+    @IBOutlet weak var sbName: UISearchBar!
     
     // MARK: - Constants
     private let refreshControl = UIRefreshControl()
@@ -27,6 +25,8 @@ class MoviesListView: UIViewController {
     // MARK: - Variables
     var movies: [Movie]?
     var selectedMovie: Movie?
+    var loadingMoreMovies: Bool = false
+    var allPagesLoaded: Bool = false
     
     // MARK: - View Lifecycle
     override func viewDidLoad() {
@@ -41,7 +41,7 @@ class MoviesListView: UIViewController {
     func setupView() {
         self.aivLoader.startAnimating()
         
-        self.tvMovies.tableFooterView = UIView()
+        self.tvMovies.allowsSelection = true
         if #available(iOS 10.0, *) {
             self.tvMovies.refreshControl = self.refreshControl
         } else {
@@ -61,6 +61,7 @@ class MoviesListView: UIViewController {
             }
             
             detailView.movie = selectedMovie
+            self.selectedMovie = nil
         }
     }
     
@@ -76,39 +77,105 @@ class MoviesListView: UIViewController {
     @objc private func refreshTableView() {
         self.presenter?.reloadAllMovies()
     }
+    
+    func loadMoreMovies() {
+        self.aivLoader.startAnimating()
+        self.lMore.isHidden = false
+        self.presenter?.getUpcomingMovies()
+    }
+    
+    func displayAllPagesLoaded() {
+        self.lMore.text = "no more upcoming movies to load"
+        self.lMore.isHidden = false
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.lMore.isHidden = true
+            self.lMore.text = "loading more movies"
+            self.loadingMoreMovies = false
+        }
+    }
 }
 
 // MARK: - Movie List Delegate
 extension MoviesListView: MoviesListPresenterDelegate {
-    func addMovies(_ movies: [Movie]) {
+    func setMovies(_ movies: [Movie]) {
         self.lMessage.isHidden = true
         
-        if (self.movies == nil) {
-            self.movies = movies
-        } else {
-            self.movies?.append(contentsOf: movies)
-        }
+        self.movies = movies
         
         self.tvMovies.reloadData()
         self.aivLoader.stopAnimating()
-        //TODO: Reload table view / update indexes
     }
     
-    func noMovies(message: String) {
-        self.lMessage.text = message
+    func noMovies(message: String, last: Bool) {
+        self.allPagesLoaded = last
         
-        self.aivLoader.stopAnimating()
-        self.lMessage.isHidden = false
+        guard let movies = self.movies else {
+            self.lMessage.text = message
+            self.tvMovies.isHidden = true
+            
+            self.aivLoader.stopAnimating()
+            self.lMore.isHidden = true
+            self.lMessage.isHidden = false
+            return
+        }
+        
+        if (movies.count < 1) {
+            self.lMessage.text = message
+            self.tvMovies.isHidden = true
+            
+            self.aivLoader.stopAnimating()
+            self.lMore.isHidden = true
+            self.lMessage.isHidden = false
+        } else {
+            self.aivLoader.stopAnimating()
+            self.displayAllPagesLoaded()
+        }
     }
     
     func reloadMovies(_ movies: [Movie]) {
+        self.allPagesLoaded = false
         self.movies = movies
         self.tvMovies.reloadData()
         self.refreshControl.endRefreshing()
     }
     
     func displayError(message: String) {
-        self.showAlertView(with: "Error", and: message)
+        self.showAlertView(with: "ERROR", and: message)
+    }
+    
+    func addMovies(_ movies: [Movie], last: Bool){
+        self.allPagesLoaded = last
+        
+        guard (movies.count > 0) else {
+            self.lMore.isHidden = true
+            self.aivLoader.stopAnimating()
+            self.loadingMoreMovies = false
+            return
+        }
+        
+        guard let _ = self.movies else {
+            self.movies = movies
+            self.loadingMoreMovies = false
+            self.lMore.isHidden = true
+            return
+        }
+        
+        let startIndex = self.movies!.count
+        let endIndex = startIndex + movies.count
+        self.movies?.append(contentsOf: movies)
+        
+        var indexPaths = [IndexPath]()
+        for i in startIndex..<endIndex {
+            let indexPath = IndexPath(row: i, section: 0)
+            indexPaths.append(indexPath)
+        }
+        
+        self.tvMovies.insertRows(at: indexPaths, with: .fade)
+        
+        self.lMore.isHidden = true
+        self.aivLoader.stopAnimating()
+        self.loadingMoreMovies = false
     }
 }
 
@@ -149,11 +216,43 @@ extension MoviesListView: UITableViewDataSource {
             return UITableViewCell()
         }
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "MovieItemCell") as? MovieItemCellView else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "MovieItemCell", for: indexPath) as? MovieItemCellView else {
             return UITableViewCell()
         }
         cell.setupCell(with: movies[indexPath.row])
+        cell.isUserInteractionEnabled = true
         
         return cell
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if (!self.loadingMoreMovies) {
+            let height = scrollView.frame.size.height
+            let bottomDistance = scrollView.contentSize.height - scrollView.contentOffset.y
+            if (bottomDistance < height - 80) {
+                self.loadingMoreMovies = true
+                
+                if (!self.allPagesLoaded) {
+                    self.loadMoreMovies()
+                } else {
+                    self.displayAllPagesLoaded()
+                }
+            }
+        }
+    }
+}
+
+// MARK: - Search Bar Delegate
+extension MoviesListView: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.aivLoader.startAnimating()
+        
+        if let search = searchBar.text {
+            self.presenter?.filterBySearch(search)
+        } else {
+            self.presenter?.filterBySearch("")
+        }
+        
+        self.sbName.resignFirstResponder()
     }
 }

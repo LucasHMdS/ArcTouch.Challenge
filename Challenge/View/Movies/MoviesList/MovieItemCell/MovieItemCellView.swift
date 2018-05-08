@@ -28,8 +28,14 @@ class MovieItemCellView: UITableViewCell {
     func setupCell(with movie: Movie) {
         self.movie = movie
         
-        if let imageURL = URL(string: movie.posterImage) {
-            self.ivPoster.kf.setImage(with: imageURL)
+        if (movie.posterImage.contains("jpg")) {
+            if let imageURL = URL(string: movie.posterImage) {
+                self.ivPoster.kf.setImage(with: imageURL)
+            } else {
+                self.ivPoster.image = UIImage(named: "Placeholder")
+            }
+        } else {
+            self.ivPoster.image = UIImage(named: "Placeholder")
         }
         
         self.lName.text = movie.name

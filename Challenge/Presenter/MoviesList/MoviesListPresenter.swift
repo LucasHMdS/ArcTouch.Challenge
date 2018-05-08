@@ -9,10 +9,11 @@
 import Foundation
 
 protocol MoviesListPresenterDelegate {
-    func addMovies(_ movies: [Movie])
-    func noMovies(message: String)
+    func setMovies(_ movies: [Movie])
+    func noMovies(message: String, last: Bool)
     func reloadMovies(_ movies: [Movie])
     func displayError(message: String)
+    func addMovies(_ movies: [Movie], last: Bool)
 }
 
 class MoviesListPresenter {
@@ -25,6 +26,8 @@ class MoviesListPresenter {
     var page: Int = 1
     var serviceRunning: Bool = false
     var isReloadCall: Bool = false
+    var searchMode: Bool = false
+    var searchString: String = ""
     
     // MARK: - Initializers
     init(_ delegate: MoviesListPresenterDelegate) {
@@ -77,8 +80,14 @@ class MoviesListPresenter {
             
             if let upcomingMoviesDTO = upcomingMoviesDTO {
                 if (upcomingMoviesDTO.results.count < 1) {
-                    DispatchQueue.main.async {
-                        self.view.noMovies(message: "No upcoming movie found")
+                    if (self.page >= upcomingMoviesDTO.totalPages) {
+                        DispatchQueue.main.async {
+                            self.view.noMovies(message: "no upcoming movie found", last: true)
+                        }
+                    } else {
+                        DispatchQueue.main.async {
+                            self.view.noMovies(message: "no upcoming movie found", last: false)
+                        }
                     }
                 } else {
                     var movies = [Movie]()
@@ -96,7 +105,7 @@ class MoviesListPresenter {
                             movie.genres = sGenres
                         } else {
                             DispatchQueue.main.async {
-                                self.view.displayError(message: "Error parsing genre names")
+                                self.view.displayError(message: "error parsing genre names")
                             }
                             return
                         }
@@ -108,7 +117,11 @@ class MoviesListPresenter {
                             self.page += 1
                             self.movies = movies
                             self.isReloadCall = false
-                            self.view.reloadMovies(movies)
+                            if (self.searchMode) {
+                                self.view.reloadMovies(self.parseSearch(movies, self.searchString))
+                            } else {
+                                self.view.reloadMovies(movies)
+                            }
                         }
                     } else {
                         DispatchQueue.main.async {
@@ -116,15 +129,21 @@ class MoviesListPresenter {
                             
                             if (self.movies != nil) {
                                 self.movies?.append(contentsOf: movies)
+                                if (self.searchMode) {
+                                    self.view.addMovies(self.parseSearch(movies, self.searchString), last: self.page >= upcomingMoviesDTO.totalPages ? true : false)
+                                } else {
+                                    self.view.addMovies(movies, last: self.page >= upcomingMoviesDTO.totalPages ? true : false)
+                                }
                             } else {
                                 self.movies = movies
+                                if (self.searchMode) {
+                                    self.view.setMovies(self.parseSearch(movies, self.searchString))
+                                } else {
+                                    self.view.setMovies(movies)
+                                }
                             }
-                            
-                            self.view.addMovies(movies)
                         }
-                        
                     }
-                    
                 }
             } else if let error = error {
                 DispatchQueue.main.async {
@@ -140,14 +159,14 @@ class MoviesListPresenter {
         if let serviceError = error as? ServiceError {
             switch (serviceError) {
                 case .urlSetup:
-                    return "Error setting up the url."
+                    return "error setting up the url."
                 case .noData:
-                    return "Data not found."
+                    return "data not found."
                 case .jsonSerialization:
-                    return "Error on json serialization."
+                    return "error on json serialization."
             }
         } else {
-            return "Error: \(error.localizedDescription)."
+            return "error: \(error.localizedDescription)."
         }
     }
     
@@ -166,5 +185,35 @@ class MoviesListPresenter {
         }
         
         return sGenres
+    }
+    
+    func parseSearch(_ movies: [Movie], _ string: String) -> [Movie] {
+        return movies.filter({
+            (movie) -> Bool in
+            
+            return movie.name.lowercased().range(of: string.lowercased()) != nil
+        })
+    }
+    
+    func filterBySearch(_ string: String) {
+        if (string != "") {
+            self.searchMode = true
+            self.searchString = string
+            
+            guard let movies = self.movies else {
+                return
+            }
+            
+            self.view.setMovies(self.parseSearch(movies, string))
+        } else {
+            self.searchMode = false
+            self.searchString = ""
+            
+            guard let movies = self.movies else {
+                return
+            }
+            
+            self.view.setMovies(movies)
+        }
     }
 }
