@@ -83,6 +83,7 @@ class MoviesListPresenterTest: XCTestCase {
     }
 }
 
+// MARK: - Movies List Presenter Delegate
 extension MoviesListPresenterTest: MoviesListPresenterDelegate {
     func setMovies(_ movies: [Movie]) {
         self.setExpectation?.fulfill()

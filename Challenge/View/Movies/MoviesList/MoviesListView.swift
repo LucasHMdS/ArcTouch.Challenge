@@ -41,6 +41,7 @@ class MoviesListView: UIViewController {
     func setupView() {
         self.aivLoader.startAnimating()
         
+        self.tvMovies.accessibilityIdentifier = "tvMovies"
         self.tvMovies.allowsSelection = true
         if #available(iOS 10.0, *) {
             self.tvMovies.refreshControl = self.refreshControl

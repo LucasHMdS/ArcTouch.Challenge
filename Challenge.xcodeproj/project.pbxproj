@@ -11,6 +11,7 @@
 		A72536D320A26B0100032641 /* ConfigurationServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72536D020A26B0100032641 /* ConfigurationServiceTest.swift */; };
 		A72536D420A26B0100032641 /* GenresServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72536D120A26B0100032641 /* GenresServiceTest.swift */; };
 		A72536D720A26E3100032641 /* MoviesListPresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72536D620A26E3100032641 /* MoviesListPresenterTest.swift */; };
+		A72536DF20A27B0B00032641 /* ChallengeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72536DE20A27B0B00032641 /* ChallengeUITests.swift */; };
 		A72ABD97209D60B2000662EE /* UpcomingMoviesDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72ABD96209D60B2000662EE /* UpcomingMoviesDTO.swift */; };
 		A72ABD99209D630A000662EE /* MovieDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72ABD98209D630A000662EE /* MovieDTO.swift */; };
 		A72ABD9B209D68E2000662EE /* DatesDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72ABD9A209D68E2000662EE /* DatesDTO.swift */; };
@@ -40,6 +41,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		A72536E120A27B0B00032641 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A7FF5EFF209D3453001515AF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A7FF5F06209D3453001515AF;
+			remoteInfo = Challenge;
+		};
 		A76029AD20A26A90000F25A0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A7FF5EFF209D3453001515AF /* Project object */;
@@ -55,6 +63,9 @@
 		A72536D020A26B0100032641 /* ConfigurationServiceTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationServiceTest.swift; sourceTree = "<group>"; };
 		A72536D120A26B0100032641 /* GenresServiceTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenresServiceTest.swift; sourceTree = "<group>"; };
 		A72536D620A26E3100032641 /* MoviesListPresenterTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoviesListPresenterTest.swift; sourceTree = "<group>"; };
+		A72536DC20A27B0B00032641 /* ChallengeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChallengeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A72536DE20A27B0B00032641 /* ChallengeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeUITests.swift; sourceTree = "<group>"; };
+		A72536E020A27B0B00032641 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A72ABD96209D60B2000662EE /* UpcomingMoviesDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingMoviesDTO.swift; sourceTree = "<group>"; };
 		A72ABD98209D630A000662EE /* MovieDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDTO.swift; sourceTree = "<group>"; };
 		A72ABD9A209D68E2000662EE /* DatesDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatesDTO.swift; sourceTree = "<group>"; };
@@ -91,6 +102,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		A72536D920A27B0B00032641 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A76029A520A26A90000F25A0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -134,6 +152,15 @@
 				A72536D620A26E3100032641 /* MoviesListPresenterTest.swift */,
 			);
 			path = Presenter;
+			sourceTree = "<group>";
+		};
+		A72536DD20A27B0B00032641 /* ChallengeUITests */ = {
+			isa = PBXGroup;
+			children = (
+				A72536E020A27B0B00032641 /* Info.plist */,
+				A72536DE20A27B0B00032641 /* ChallengeUITests.swift */,
+			);
+			path = ChallengeUITests;
 			sourceTree = "<group>";
 		};
 		A72ABD95209D6042000662EE /* Data Transfer Object */ = {
@@ -198,6 +225,7 @@
 			children = (
 				A7FF5F09209D3453001515AF /* Challenge */,
 				A76029A920A26A90000F25A0 /* ChallengeTests */,
+				A72536DD20A27B0B00032641 /* ChallengeUITests */,
 				A7FF5F08209D3453001515AF /* Products */,
 				5E87FA479E60DF0F6E726103 /* Pods */,
 				EDA55166690F48BD214ED594 /* Frameworks */,
@@ -209,6 +237,7 @@
 			children = (
 				A7FF5F07209D3453001515AF /* Challenge.app */,
 				A76029A820A26A90000F25A0 /* ChallengeTests.xctest */,
+				A72536DC20A27B0B00032641 /* ChallengeUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -364,6 +393,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		A72536DB20A27B0B00032641 /* ChallengeUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A72536E320A27B0B00032641 /* Build configuration list for PBXNativeTarget "ChallengeUITests" */;
+			buildPhases = (
+				A72536D820A27B0B00032641 /* Sources */,
+				A72536D920A27B0B00032641 /* Frameworks */,
+				A72536DA20A27B0B00032641 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A72536E220A27B0B00032641 /* PBXTargetDependency */,
+			);
+			name = ChallengeUITests;
+			productName = ChallengeUITests;
+			productReference = A72536DC20A27B0B00032641 /* ChallengeUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		A76029A720A26A90000F25A0 /* ChallengeTests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = A76029AF20A26A90000F25A0 /* Build configuration list for PBXNativeTarget "ChallengeTests" */;
@@ -411,6 +458,10 @@
 				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Lucas Henrique Machado da Silva";
 				TargetAttributes = {
+					A72536DB20A27B0B00032641 = {
+						CreatedOnToolsVersion = 9.3;
+						TestTargetID = A7FF5F06209D3453001515AF;
+					};
 					A76029A720A26A90000F25A0 = {
 						CreatedOnToolsVersion = 9.3;
 						TestTargetID = A7FF5F06209D3453001515AF;
@@ -435,11 +486,19 @@
 			targets = (
 				A7FF5F06209D3453001515AF /* Challenge */,
 				A76029A720A26A90000F25A0 /* ChallengeTests */,
+				A72536DB20A27B0B00032641 /* ChallengeUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		A72536DA20A27B0B00032641 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A76029A620A26A90000F25A0 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -499,6 +558,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		A72536D820A27B0B00032641 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A72536DF20A27B0B00032641 /* ChallengeUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A76029A420A26A90000F25A0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -542,6 +609,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		A72536E220A27B0B00032641 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A7FF5F06209D3453001515AF /* Challenge */;
+			targetProxy = A72536E120A27B0B00032641 /* PBXContainerItemProxy */;
+		};
 		A76029AE20A26A90000F25A0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = A7FF5F06209D3453001515AF /* Challenge */;
@@ -550,6 +622,42 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		A72536E420A27B0B00032641 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = ChallengeUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.arctouch.Challenge.ChallengeUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Challenge;
+			};
+			name = Debug;
+		};
+		A72536E520A27B0B00032641 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = ChallengeUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.arctouch.Challenge.ChallengeUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Challenge;
+			};
+			name = Release;
+		};
 		A76029B020A26A90000F25A0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -747,6 +855,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		A72536E320A27B0B00032641 /* Build configuration list for PBXNativeTarget "ChallengeUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A72536E420A27B0B00032641 /* Debug */,
+				A72536E520A27B0B00032641 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		A76029AF20A26A90000F25A0 /* Build configuration list for PBXNativeTarget "ChallengeTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
