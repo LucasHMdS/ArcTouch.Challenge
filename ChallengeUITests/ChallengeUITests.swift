@@ -33,7 +33,7 @@ class ChallengeUITests: XCTestCase {
         super.tearDown()
     }
     
-    // MARK: - Tests
+    // MARK: - UITests
     func testChallenge() {
         guard let application = self.application else {
             XCTFail("Error: No application loaded.")
@@ -53,10 +53,11 @@ class ChallengeUITests: XCTestCase {
             let random = Int(arc4random_uniform(UInt32(cells.count)))
             if (cells.element(boundBy: random).exists) {
                 cells.element(boundBy: random).tap()
+            } else {
+                XCTFail("Error: Cell missing.")
             }
             
             application.navigationBars.buttons.element(boundBy: 0).tap()
         }
     }
-    
 }
