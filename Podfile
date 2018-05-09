@@ -9,8 +9,4 @@ target 'Challenge' do
   target 'ChallengeTests' do
     inherit! :search_paths
   end
-
-  target 'ChallengeUITests' do
-    inherit! :search_paths
-  end
 end

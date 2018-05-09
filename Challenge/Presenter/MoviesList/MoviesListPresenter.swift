@@ -54,10 +54,8 @@ class MoviesListPresenter {
                         genres.append(Genre(genreDTO))
                     }
                     
-                    DispatchQueue.main.async {
-                        self.genres = genres
-                        self.runGetUpcoming()
-                    }
+                    self.genres = genres
+                    self.runGetUpcoming()
                 } else if let error = error {
                     DispatchQueue.main.async {
                         self.view.displayError(message: self.getMessage(from: error))

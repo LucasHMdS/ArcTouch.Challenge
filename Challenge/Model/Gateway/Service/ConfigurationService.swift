@@ -13,7 +13,7 @@ class ConfigurationService: BaseService {
     private static let endpoint = "/configuration"
     
     // MARK: - Service
-    static func getConfiguration(_ page: Int = 0, completionHandler: @escaping (ConfigurationDTO?, Error?) -> Void) {
+    static func getConfiguration(completionHandler: @escaping (ConfigurationDTO?, Error?) -> Void) {
         guard let url = getFullURL(endpoint, "") else {
             completionHandler(nil, ServiceError.urlSetup)
             return
