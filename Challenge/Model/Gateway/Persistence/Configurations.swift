@@ -18,7 +18,8 @@ class Configurations: NSObject {
     let tmdbImagesURL: String = "https://image.tmdb.org/t/p/"
     
     // MARK: - Variables
-    var imagesSize: String = "original"
+    var posterSize: String = "w342"
+    var backdropSize: String = "w300"
     var language: String = "en-US"
     var itemsPerPage: Int = 20
     var region: String = ""
@@ -27,19 +28,29 @@ class Configurations: NSObject {
     private override init() {
         super.init()
         
-        self.loadImagesSize()
+        self.loadPosterSize()
+        self.loadBackdropSize()
         self.loadLanguage()
         self.loadItemsPerPage()
         self.loadRegion()
     }
     
     // MARK: - Actions
-    func saveImagesSize(_ size: String = "original") {
-        if (size != self.imagesSize) {
+    func savePosterSize(_ size: String = "w342") {
+        if (size != self.posterSize) {
             let userDefaults = UserDefaults.standard
-            userDefaults.set(size, forKey: "imagesSize")
+            userDefaults.set(size, forKey: "posterSize")
             
-            self.loadImagesSize()
+            self.loadPosterSize()
+        }
+    }
+    
+    func saveBackdropSize(_ size: String = "w300") {
+        if (size != self.backdropSize) {
+            let userDefaults = UserDefaults.standard
+            userDefaults.set(size, forKey: "backdropSize")
+            
+            self.loadBackdropSize()
         }
     }
     
@@ -71,12 +82,21 @@ class Configurations: NSObject {
     }
     
     // MARK: - Private Functions
-    private func loadImagesSize() {
+    private func loadPosterSize() {
         let userDefaults = UserDefaults.standard
-        if let size = userDefaults.object(forKey: "imagesSize") as? String {
-            self.imagesSize = size
+        if let size = userDefaults.object(forKey: "posterSize") as? String {
+            self.posterSize = size
         } else {
-            self.imagesSize = "original"
+            self.posterSize = "w342"
+        }
+    }
+    
+    private func loadBackdropSize() {
+        let userDefaults = UserDefaults.standard
+        if let size = userDefaults.object(forKey: "backdropSize") as? String {
+            self.backdropSize = size
+        } else {
+            self.backdropSize = "w300"
         }
     }
     

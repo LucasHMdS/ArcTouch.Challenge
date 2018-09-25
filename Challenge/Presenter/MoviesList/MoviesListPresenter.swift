@@ -99,9 +99,9 @@ class MoviesListPresenter {
                         movie.overview = result.overview
                         movie.releaseDate = result.releaseDate
                         if let poster = result.posterPath {
-                            movie.posterImage = "\(Configurations.shared.tmdbImagesURL)\(Configurations.shared.imagesSize)\(poster)"
+                            movie.posterImage = "\(Configurations.shared.tmdbImagesURL)\(Configurations.shared.posterSize)\(poster)"
                         } else if let backdrop = result.backdropPath {
-                            movie.posterImage = "\(Configurations.shared.tmdbImagesURL)\(Configurations.shared.imagesSize)\(backdrop)"
+                            movie.posterImage = "\(Configurations.shared.tmdbImagesURL)\(Configurations.shared.backdropSize)\(backdrop)"
                         }
                         if let sGenres = self.parseGenreIdToName(result.genreIds) {
                             movie.genres = sGenres

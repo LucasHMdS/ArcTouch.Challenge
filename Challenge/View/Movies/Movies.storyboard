@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vaE-xh-I0T">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vaE-xh-I0T">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -48,7 +48,7 @@
                                 </connections>
                             </searchBar>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NO MOVIES WITH MESSAGE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0j1-kf-FE1">
-                                <rect key="frame" x="63" y="322" width="250" height="23"/>
+                                <rect key="frame" x="62.5" y="322" width="250" height="23"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="19"/>
                                 <color key="textColor" red="0.078431372550000003" green="0.1058823529" blue="0.25490196079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -67,7 +67,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" image="Placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="m4t-EZ-w1H">
-                                                    <rect key="frame" x="12" y="12" width="75" height="75"/>
+                                                    <rect key="frame" x="12" y="12" width="74.5" height="74.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="m4t-EZ-w1H" secondAttribute="height" multiplier="1:1" id="2Ei-X4-5cu"/>
                                                     </constraints>
@@ -78,19 +78,19 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Movie Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="RZc-8y-Oca">
-                                                    <rect key="frame" x="95" y="12" width="268" height="36"/>
+                                                    <rect key="frame" x="94.5" y="12" width="268.5" height="35.5"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                                     <color key="textColor" red="0.078431372550000003" green="0.1058823529" blue="0.25490196079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="Genre 01, Genre 02 and Genre 03." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hb5-11-jFu">
-                                                    <rect key="frame" x="95" y="52" width="268" height="17"/>
+                                                    <rect key="frame" x="94.5" y="51.5" width="268.5" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="AAAA/MM/DD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cAI-NQ-jPI">
-                                                    <rect key="frame" x="95" y="71" width="268" height="16"/>
+                                                    <rect key="frame" x="94.5" y="70.5" width="268.5" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="13"/>
                                                     <color key="textColor" red="0.078431372550000003" green="0.1058823529" blue="0.25490196079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -199,20 +199,22 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="G4x-uk-CYQ">
-                                                    <rect key="frame" x="77.5" y="20" width="220" height="220"/>
+                                                    <rect key="frame" x="114" y="20" width="147" height="220"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="220" id="U5H-yn-E2U"/>
-                                                        <constraint firstAttribute="width" secondItem="G4x-uk-CYQ" secondAttribute="height" multiplier="1:1" id="hoX-h1-qaz"/>
+                                                        <constraint firstAttribute="width" secondItem="G4x-uk-CYQ" secondAttribute="height" multiplier="1:1.5" id="WK5-LZ-1s7"/>
+                                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="wdA-Mb-v1C"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                            <integer key="value" value="3"/>
+                                                            <integer key="value" value="5"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
+                                                <constraint firstItem="G4x-uk-CYQ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="WcU-Ni-2Oi" secondAttribute="leading" constant="40" id="ISs-CC-g5g"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="G4x-uk-CYQ" secondAttribute="trailing" constant="40" id="IZk-o6-hVa"/>
                                                 <constraint firstItem="G4x-uk-CYQ" firstAttribute="top" secondItem="WcU-Ni-2Oi" secondAttribute="top" constant="20" id="YMZ-BU-pSu"/>
                                                 <constraint firstAttribute="bottom" secondItem="G4x-uk-CYQ" secondAttribute="bottom" constant="8" id="ghL-oc-0P8"/>
                                                 <constraint firstItem="G4x-uk-CYQ" firstAttribute="centerX" secondItem="WcU-Ni-2Oi" secondAttribute="centerX" id="twz-pT-NNu"/>
