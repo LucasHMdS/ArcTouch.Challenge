@@ -8,24 +8,12 @@
 
 import UIKit
 
-class ConfigurationDTO: NSObject {
-    var images: ImagesDTO = ImagesDTO()
-    var changeKeys: [String] = [String]()
+struct ConfigurationDTO: Codable {
+    let images: ImagesDTO
+    let changeKeys: [String]
     
-    // MARK: - Initializers
-    init(_ json: NSDictionary) {
-        super.init()
-        
-        if let oImages = json["images"] as? NSDictionary {
-            self.images = ImagesDTO(oImages)
-        }
-        
-        if let aChangeKeys = json["change_keys"] as? NSArray {
-            for key in aChangeKeys {
-                if let sKey = key as? String {
-                    self.changeKeys.append(sKey)
-                }
-            }
-        }
+    enum CodingKeys: String, CodingKey {
+        case images
+        case changeKeys = "change_keys"
     }
 }

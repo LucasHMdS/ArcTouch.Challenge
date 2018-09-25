@@ -32,12 +32,13 @@ class ConfigurationService: BaseService {
                 return
             }
             
-            guard let json = (try? JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers)) as? NSDictionary else {
+            do {
+                let configurationDTO = try JSONDecoder().decode(ConfigurationDTO.self, from: data)
+                completionHandler(configurationDTO, nil)
+            } catch {
                 completionHandler(nil, ServiceError.jsonSerialization)
                 return
             }
-            
-            completionHandler(ConfigurationDTO(json), nil)
-            }.resume()
+        }.resume()
     }
 }

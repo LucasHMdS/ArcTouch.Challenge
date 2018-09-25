@@ -8,40 +8,18 @@
 
 import UIKit
 
-class UpcomingMoviesDTO: NSObject {
-    var page: Int = 0
-    var results: [MovieDTO] = [MovieDTO]()
-    var dates: DatesDTO = DatesDTO()
-    var totalPages: Int = 0
-    var totalResults: Int = 0
+struct UpcomingMoviesDTO: Codable {
+    let page: Int
+    let results: [MovieDTO]
+    let dates: DatesDTO
+    let totalPages: Int
+    let totalResults: Int
     
-    // MARK: - Initializers
-    init(_ json: NSDictionary) {
-        super.init()
-        
-        if let iPage = json["page"] as? Int {
-            self.page = iPage
-        }
-        
-        if let aResults = json["results"] as? NSArray {
-            for result in aResults {
-                if let dResult = result as? NSDictionary {
-                    let movieDTO = MovieDTO(dResult)
-                    self.results.append(movieDTO)
-                }
-            }
-        }
-        
-        if let oDates = json["dates"] as? NSDictionary {
-            self.dates = DatesDTO(oDates)
-        }
-        
-        if let iTotalPages = json["total_pages"] as? Int {
-            self.totalPages = iTotalPages
-        }
-        
-        if let iTotalResults = json["total_results"] as? Int {
-            self.totalResults = iTotalResults
-        }
+    enum CodingKeys: String, CodingKey {
+        case page
+        case results
+        case dates
+        case totalPages = "total_pages"
+        case totalResults = "total_results"
     }
 }

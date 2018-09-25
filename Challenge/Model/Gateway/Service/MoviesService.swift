@@ -32,12 +32,13 @@ class MoviesService: BaseService {
                 return
             }
             
-            guard let json = (try? JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers)) as? NSDictionary else {
+            do {
+                let upcomingMovieDTO = try JSONDecoder().decode(UpcomingMoviesDTO.self, from: data)
+                completionHandler(upcomingMovieDTO, nil)
+            } catch {
                 completionHandler(nil, ServiceError.jsonSerialization)
                 return
             }
-            
-            completionHandler(UpcomingMoviesDTO(json), nil)
         }.resume()
     }
 }

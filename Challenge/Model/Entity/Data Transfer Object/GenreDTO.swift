@@ -8,20 +8,7 @@
 
 import UIKit
 
-class GenreDTO: NSObject {
-    var gId: Int = 0
-    var name: String = ""
-    
-    // MARK: - Initializers
-    init(_ json: NSDictionary) {
-        super.init()
-        
-        if let iId = json["id"] as? Int {
-            self.gId = iId
-        }
-        
-        if let sName = json["name"] as? String {
-            self.name = sName
-        }
-    }
+struct GenreDTO: Codable {
+    let id: Int = 0
+    let name: String = ""
 }

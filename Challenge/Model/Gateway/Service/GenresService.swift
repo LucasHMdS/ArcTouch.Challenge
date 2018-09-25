@@ -32,12 +32,13 @@ class GenresService: BaseService {
                 return
             }
             
-            guard let json = (try? JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers)) as? NSDictionary else {
+            do {
+                let genresListDTO = try JSONDecoder().decode(GenresListDTO.self, from: data)
+                completionHandler(genresListDTO, nil)
+            } catch {
                 completionHandler(nil, ServiceError.jsonSerialization)
                 return
             }
-            
-            completionHandler(GenresListDTO(json), nil)
         }.resume()
     }
 }

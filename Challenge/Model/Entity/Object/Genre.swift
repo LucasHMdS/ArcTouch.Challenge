@@ -19,7 +19,7 @@ class Genre {
     }
     
     init(_ genreDTO: GenreDTO) {
-        self.id = genreDTO.gId
+        self.id = genreDTO.id
         self.name = genreDTO.name
     }
 }
