@@ -46,7 +46,9 @@ class MoviesListPresenter {
             self.runGetUpcoming()
         } else {
             GenresService.getMovieList() {
-                (genresListDTO, error) in
+                [weak self] (genresListDTO, error) in
+                
+                guard let `self` = self else { return }
                 
                 if let genresListDTO = genresListDTO {
                     var genres = [Genre]()
@@ -74,7 +76,9 @@ class MoviesListPresenter {
     // MARK - Helpers
     func runGetUpcoming() {
         MoviesService.getUpcoming(page) {
-            (upcomingMoviesDTO, error) in
+            [weak self] (upcomingMoviesDTO, error) in
+            
+            guard let `self` = self else { return }
             
             if let upcomingMoviesDTO = upcomingMoviesDTO {
                 if (upcomingMoviesDTO.results.count < 1) {
