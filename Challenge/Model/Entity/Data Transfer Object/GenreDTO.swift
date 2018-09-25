@@ -9,6 +9,6 @@
 import UIKit
 
 struct GenreDTO: Codable {
-    let id: Int = 0
-    let name: String = ""
+    let id: Int
+    let name: String
 }
